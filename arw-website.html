@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#55b8ef">
+<title>ARW — Angel Rightwings Wings</title>
+<style>
+:root{--blue:#4774ec;--deep:#244da8;--sky:#58c5f4;--white:#f8fbff;--ink:#244477;--pink:#f477c2;--yellow:#ffe27c}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:white;min-height:100vh;background:linear-gradient(180deg,#4d91e8 0%,#b9d8fa 45%,#4e9d6c 100%);background-attachment:fixed}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 15% 18%,#fff9 0 8%,transparent 24%),radial-gradient(ellipse at 80% 12%,#fff9 0 10%,transparent 23%),radial-gradient(ellipse at 50% 55%,#fff8 0 8%,transparent 22%),linear-gradient(130deg,#376bc5aa,#9bc8f2aa 55%,#347a55aa);filter:blur(2px)}
+header{max-width:850px;margin:auto;padding:28px 20px 8px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}.brand img{width:70px;height:70px;object-fit:contain}.brand h1{font-size:clamp(25px,6vw,42px);margin:0;text-shadow:0 4px 0 #2854a5;font-weight:900}.sound{border:3px solid #c7edff;background:#eaf8ffcc;color:#3869ad;border-radius:50%;width:58px;height:58px;font-size:25px}
+main{max-width:850px;margin:auto;padding:14px 18px 120px}.intro{font-size:18px;margin:8px 0 22px}
+.panel{background:linear-gradient(145deg,#5c82f5f5,#345bd6f5);border:5px solid white;border-radius:34px;padding:25px;margin:18px 0;box-shadow:0 10px 0 #24479b,0 16px 24px #14366a55}
+.panel.light{background:#f5faffed;color:var(--ink);border:0;box-shadow:0 8px 0 #a9c9e8}
+h2{font-size:clamp(27px,6vw,40px);margin:5px 0 8px;text-shadow:0 3px 0 #3158a2}h3{margin:0 0 15px;font-size:23px}p{line-height:1.65}
+input,textarea,select{width:100%;border:0;border-radius:20px;background:#f6f7fc;color:#253c62;padding:18px 20px;font:inherit;font-size:18px;margin:8px 0 20px;outline:3px solid transparent}input:focus,textarea:focus{outline-color:#9de4ff}textarea{min-height:140px;resize:vertical}
+label{display:block;font-size:18px;font-weight:700;margin-top:8px}
+.btn{display:block;width:100%;border:5px solid white;border-radius:60px;padding:17px 20px;margin:14px 0;background:linear-gradient(#83e0ff,#2691ed);color:white;font-size:21px;font-weight:900;text-shadow:0 3px 0 #2361a8;box-shadow:0 7px 0 #194b9c;cursor:pointer}.btn.alt{background:linear-gradient(#fff,#dceeff);color:#3475ca;text-shadow:none;border-color:#d9f0ff;box-shadow:0 6px 0 #a5c8e9}.btn:active{transform:translateY(4px);box-shadow:0 3px 0 #194b9c}
+.page{display:none}.page.active{display:block}.hero{text-align:center;padding:18px 0}.hero .logo{font-size:82px;filter:drop-shadow(0 5px 3px #3157a5)}.hero h2{margin:4px 0 28px}
+.quick{display:grid;gap:13px}.quick button{border:5px solid white;border-radius:60px;background:linear-gradient(#fff,#dceeff);padding:16px;color:#31558d;font-size:20px;font-weight:900;text-align:left;box-shadow:0 7px 0 #9bb9dd;cursor:pointer}.quick span{display:inline-grid;place-items:center;width:55px;height:55px;border-radius:50%;background:#69c5f5;margin-right:14px;font-size:28px}
+.bottom-nav{position:fixed;z-index:10;bottom:14px;left:50%;transform:translateX(-50%);width:min(94%,820px);display:flex;justify-content:space-around;gap:2px;padding:10px 7px;background:#ffffffed;border:5px solid white;border-radius:55px;box-shadow:0 7px 0 #9eb9d8}
+.bottom-nav button{border:0;background:transparent;color:#426493;font-weight:850;font-size:12px;padding:7px 5px;border-radius:30px;min-width:0;flex:1;cursor:pointer}.bottom-nav button b{display:block;font-size:25px}.bottom-nav button.active{background:var(--pink);color:white;box-shadow:0 5px 0 #a83379}
+.card{background:#426fe8;border:5px solid white;border-radius:30px;padding:20px;margin:15px 0;box-shadow:0 8px 0 #24489b;display:flex;align-items:center;gap:14px}.num{border-radius:50%;background:#ffffff44;padding:14px;font-weight:900}.member-info{flex:1;min-width:0}.member-info strong{font-size:20px}.smallbtn{border:2px solid #ffffff88;background:#ffffff22;color:white;padding:10px 14px;border-radius:16px;font-weight:700}
+.calendar{background:#f3f8ff;color:#244477;border-radius:28px;padding:18px;display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.calendar .month{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;font-size:22px;font-weight:900}.calendar button{border:2px solid #d9e8fa;background:#eef5ff;border-radius:17px;min-height:50px;color:#254675;font-weight:800}.calendar button.event{background:#ffe38a;border-color:#f2c84c}.calendar button.today{background:#5277ed;color:white}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.gallery-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:18px;background:#dcecff}
+.notice{background:#ffffffed;color:#31558d;border-radius:22px;padding:17px;margin:12px 0;font-weight:650}.hidden{display:none!important}.muted{opacity:.85}.tag{display:inline-block;background:#ffffff33;border-radius:30px;padding:8px 15px}
+footer{text-align:center;padding:25px;color:#fff;text-shadow:0 2px 3px #234}
+@media(min-width:650px){.quick{grid-template-columns:1fr 1fr}.gallery-grid{grid-template-columns:repeat(3,1fr)}main{padding-top:24px}.panel{padding:32px}}
+@media(max-width:390px){.bottom-nav button{font-size:10px}.bottom-nav button b{font-size:21px}.panel{padding:19px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><div style="font-size:48px">💠</div><h1>ARW</h1></div>
+ <div><button class="sound" aria-label="Musik" onclick="toggleMusic()">♫</button> <button class="sound" aria-label="Suara" onclick="this.textContent=this.textContent==='📢'?'🔇':'📢'">📢</button></div>
+</header>
+<main>
+<section id="home" class="page active">
+ <div class="hero"><div class="logo">🪽</div><h2>Kamu mau apa nih, wings?</h2></div>
+ <div class="quick">
+  <button onclick="showPage('daftar')"><span>📝</span> DAFTAR ARW　›</button>
+  <button onclick="showPage('member')"><span>👥</span> LIAT MEMBER ARW　›</button>
+  <button onclick="showPage('jadwal')"><span>📅</span> LIAT JADWAL ARW　›</button>
+  <button onclick="showPage('galeri')"><span>🖼️</span> LIAT GALERI ARW　›</button>
+  <button onclick="showPage('saran')"><span>💌</span> KASIH SARAN BUAT ARW　›</button>
+  <button onclick="showPage('syarat')"><span>📜</span> SYARAT & KETENTUAN　›</button>
+ </div>
+</section>
+
+<section id="syarat" class="page">
+ <h2>✨ SYARAT & KETENTUAN ✨</h2>
+ <div class="panel">
+  <p>🔞 <strong>Umur harus 18 tahun ke atas.</strong><br>Kami menjaga komunitas ini tetap dewasa dan kondusif.</p>
+  <p>📅 <strong>Wajib ikut agenda 2–3 kali per minggu.</strong><br>Aktif adalah bentuk loyalitasmu.</p>
+  <p>❤️ <strong>No baper.</strong> Jaga emosi, jaga vibes, jaga kekompakan keluarga.</p>
+  <p>🤝 <strong>Berani berbaur.</strong> Terbuka, ramah, dan aktif berinteraksi dengan sesama anggota.</p>
+  <p>📢 <strong>Respons ketika dipanggil.</strong> Hargai komunikasi antaranggota.</p>
+  <button class="btn" onclick="showPage('daftar')">LANJUT DAFTAR</button>
+ </div>
+</section>
+
+<section id="daftar" class="page">
+ <h2>📝 Daftar ARW</h2><p>Isi data berikut untuk mengajukan pendaftaran anggota.</p>
+ <form class="panel" id="registerForm">
+  <label>Nama panggilan</label><input name="name" required placeholder="Nama kamu">
+  <label>Username Roblox</label><input name="roblox" required placeholder="@username">
+  <label>Usia</label><input name="age" type="number" min="18" required placeholder="Minimal 18 tahun">
+  <label>Alasan ingin bergabung</label><textarea name="reason" required placeholder="Ceritakan sedikit tentang dirimu..."></textarea>
+  <button class="btn" type="submit">KIRIM PENDAFTARAN</button>
+  <p class="muted" id="registerStatus"></p>
+ </form>
+</section>
+
+<section id="member" class="page">
+ <h2>💠 Member ARW</h2><p><span class="tag" id="memberCount">0 Wings</span></p>
+ <button class="btn alt" onclick="renderMembers()">↻ Refresh daftar anggota</button>
+ <div id="memberList"></div>
+</section>
+
+<section id="jadwal" class="page">
+ <h2>📅 Kalender ARW</h2><p>Jadwal agenda clan. Semua jam dalam WIB.</p>
+ <div class="calendar" id="calendar"></div>
+ <div class="panel light"><h3 id="selectedDate">Pilih tanggal</h3><div id="eventList">Pilih tanggal pada kalender untuk melihat agenda.</div></div>
+</section>
+
+<section id="galeri" class="page">
+ <h2>🖼️ Galeri ARW</h2><p>Kenangan seru para Wings. Tambahkan foto melalui pilihan file.</p>
+ <div class="panel light"><label>Tambah foto dari perangkat</label><input id="photoInput" type="file" accept="image/*" multiple><p class="muted">Foto yang dipilih hanya tersimpan di browser/perangkat ini.</p></div>
+ <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<section id="saran" class="page">
+ <h2>💌 Saran dan Masukan</h2><p>Ada ide biar ARW makin solid? Tulis di sini.</p>
+ <form class="panel" id="suggestForm">
+  <label>Nama</label><input name="name" required placeholder="Nama kamu">
+  <label>Saran / masukan</label><textarea name="message" required placeholder="Tulis saranmu di sini..."></textarea>
+  <button class="btn" type="submit">KIRIM MASUKAN</button><p id="suggestStatus"></p>
+ </form>
+ <div class="panel">
+  <h3>🔒 Lihat masukan (admin)</h3>
+  <input id="feedbackPassword" type="password" placeholder="Password admin">
+  <button class="btn alt" onclick="viewFeedback()">BUKA</button>
+  <div id="feedbackList"></div>
+ </div>
+</section>
+
+<section id="admin" class="page">
+ <h2>⚙️ Admin Mode</h2>
+ <div class="panel" id="adminLogin">
+  <p>Masukkan password admin.</p><input id="adminPassword" type="password" placeholder="Password admin">
+  <button class="btn" onclick="loginAdmin()">MASUK</button><p id="loginStatus"></p>
+ </div>
+ <div class="panel hidden" id="adminPanel">
+  <h3>Dashboard Admin</h3><p>Login berhasil pada sesi browser ini.</p>
+  <label>Tambah anggota (nama | username Roblox)</label><input id="newMember" placeholder="Nama | @username">
+  <button class="btn" onclick="addMember()">TAMBAH ANGGOTA</button>
+  <label>Tambah agenda (tanggal YYYY-MM-DD | judul)</label><input id="newEvent" placeholder="2026-11-10 | Mabar ARW">
+  <button class="btn" onclick="addEvent()">TAMBAH AGENDA</button>
+  <button class="btn alt" onclick="logoutAdmin()">KELUAR ADMIN</button>
+  <p class="muted">Catatan: versi demo ini menyimpan data di browser. Untuk admin sungguhan gunakan backend dan autentikasi server.</p>
+ </div>
+</section>
+<footer>🪽 Angel Rightwings Wings · ARW</footer>
+</main>
+
+<nav class="bottom-nav" aria-label="Navigasi utama">
+ <button class="active" data-page="home" onclick="showPage('home')"><b>🏡</b>Beranda</button>
+ <button data-page="daftar" onclick="showPage('daftar')"><b>📝</b>Daftar</button>
+ <button data-page="member" onclick="showPage('member')"><b>👥</b>Member</button>
+ <button data-page="jadwal" onclick="showPage('jadwal')"><b>📅</b>Jadwal</button>
+ <button data-page="galeri" onclick="showPage('galeri')"><b>🖼️</b>Galeri</button>
+ <button data-page="saran" onclick="showPage('saran')"><b>💌</b>Saran</button>
+ <button data-page="admin" onclick="showPage('admin')"><b>⚙️</b>Admin</button>
+</nav>
+<script>
+const ADMIN_PASSWORD = "ARW2026"; // Ganti untuk demo; jangan gunakan ini untuk keamanan produksi.
+const get=(key, fallback=[])=>JSON.parse(localStorage.getItem(key)||JSON.stringify(fallback));
+const put=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
+let members=get("arw_members",[
+ {name:"MikuOwner",username:"@awahatsune",role:"Rama"},
+ {name:"QueenARW",username:"@adheramax",role:"Hira"},
+ {name:"seraaARW",username:"@eycaa_cawww",role:"Member"}
+]);
+let events=get("arw_events",{"2026-11-05":["Agenda komunitas"],"2026-11-07":["Mabar ARW"],"2026-11-12":["Agenda komunitas"],"2026-11-13":["Mabar ARW"],"2026-11-19":["Agenda komunitas"],"2026-11-21":["Mabar ARW"],"2026-11-26":["Agenda komunitas"]});
+function showPage(id){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===id));document.querySelectorAll(".bottom-nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));if(id==="member")renderMembers();if(id==="jadwal")renderCalendar();window.scrollTo({top:0,behavior:"smooth"});}
+function renderMembers(){put("arw_members",members);document.getElementById("memberCount").textContent=members.length+" Wings";document.getElementById("memberList").innerHTML=members.map((m,i)=>`<div class="card"><div class="num">${i+1}</div><div class="member-info"><strong>🎮 ${escapeHTML(m.name)}</strong><br>${escapeHTML(m.username)}<br><span class="muted">${escapeHTML(m.role||"Member")}</span></div><button class="smallbtn" onclick="copyText('${String(m.username).replace(/'/g,"\\'")}')">📋 Salin</button></div>`).join("")||"<p>Belum ada anggota.</p>";}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function copyText(t){navigator.clipboard?.writeText(t).then(()=>alert("Username disalin!")).catch(()=>alert(t));}
+document.getElementById("registerForm").addEventListener("submit",e=>{e.preventDefault();let d=Object.fromEntries(new FormData(e.target));if(+d.age<18){document.getElementById("registerStatus").textContent="Pendaftaran hanya untuk usia 18 tahun ke atas.";return;}let a=get("arw_applications");a.push({...d,created:new Date().toISOString()});put("arw_applications",a);document.getElementById("registerStatus").textContent="Pendaftaran tersimpan di perangkat ini. Hubungi admin untuk konfirmasi.";e.target.reset();});
+document.getElementById("suggestForm").addEventListener("submit",e=>{e.preventDefault();let d=Object.fromEntries(new FormData(e.target));let a=get("arw_feedback");a.push({...d,created:new Date().toLocaleString("id-ID")});put("arw_feedback",a);document.getElementById("suggestStatus").textContent="Terima kasih! Masukan tersimpan.";e.target.reset();});
+function viewFeedback(){if(document.getElementById("feedbackPassword").value!==ADMIN_PASSWORD){document.getElementById("feedbackList").innerHTML="<p>Password salah.</p>";return;}let a=get("arw_feedback");document.getElementById("feedbackList").innerHTML=a.map(x=>`<div class="notice"><b>${escapeHTML(x.name)}</b><p>${escapeHTML(x.message)}</p><small>${escapeHTML(x.created)}</small></div>`).join("")||"<p>Belum ada masukan.</p>";}
+function loginAdmin(){if(document.getElementById("adminPassword").value===ADMIN_PASSWORD){document.getElementById("adminLogin").classList.add("hidden");document.getElementById("adminPanel").classList.remove("hidden");}else document.getElementById("loginStatus").textContent="Password salah.";}
+function logoutAdmin(){document.getElementById("adminLogin").classList.remove("hidden");document.getElementById("adminPanel").classList.add("hidden");document.getElementById("adminPassword").value="";}
+function addMember(){let v=document.getElementById("newMember").value.split("|");if(!v[0]||!v[1])return alert("Isi nama dan username dipisahkan tanda |");members.push({name:v[0].trim(),username:v[1].trim(),role:"Member"});put("arw_members",members);document.getElementById("newMember").value="";alert("Anggota ditambahkan.");}
+function addEvent(){let v=document.getElementById("newEvent").value.split("|");if(!v[0]||!v[1])return alert("Isi tanggal dan judul dipisahkan tanda |");events[v[0].trim()]=[...(events[v[0].trim()]||[]),v[1].trim()];put("arw_events",events);document.getElementById("newEvent").value="";renderCalendar();alert("Agenda ditambahkan.");}
+let shownMonth=new Date(2026,10,1),chosenDate="";
+function renderCalendar(){let y=shownMonth.getFullYear(),m=shownMonth.getMonth(),first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();let start=(first+6)%7;let el=document.getElementById("calendar");el.innerHTML=`<div class="month"><button onclick="changeMonth(-1)">‹</button>${shownMonth.toLocaleDateString("id-ID",{month:"long",year:"numeric"})}<button onclick="changeMonth(1)">›</button></div>`+["Min","Sen","Sel","Rab","Kam","Jum","Sab"].map(x=>`<div style="text-align:center;font-weight:800">${x}</div>`).join("");for(let i=0;i<start;i++)el.innerHTML+="<div></div>";for(let d=1;d<=days;d++){let key=`${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;el.innerHTML+=`<button class="${events[key]?"event":""} ${chosenDate===key?"today":""}" onclick="selectDate('${key}')">${d}${events[key]?" ✨":""}</button>`;}if(!chosenDate)selectDate(`${y}-${String(m+1).padStart(2,"0")}-01`);}
+function changeMonth(n){shownMonth.setMonth(shownMonth.getMonth()+n);chosenDate="";renderCalendar();}
+function selectDate(key){chosenDate=key;document.getElementById("selectedDate").textContent=new Date(key+"T00:00:00").toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long",year:"numeric"});document.getElementById("eventList").innerHTML=(events[key]||[]).map(x=>`<div class="notice">✨ ${escapeHTML(x)}</div>`).join("")||"Tidak ada agenda di hari ini.";document.querySelectorAll("#calendar button").forEach(b=>{if(b.textContent.trim()===String(Number(key.slice(-2))))b.classList.add("today");});}
+document.getElementById("photoInput").addEventListener("change",e=>{let grid=document.getElementById("galleryGrid");[...e.target.files].forEach(f=>{let img=document.createElement("img");img.src=URL.createObjectURL(f);img.alt="Foto kegiatan ARW";grid.appendChild(img);});});
+function toggleMusic(){alert("Tambahkan file musik milikmu dan pemutar audio di sini.");}
+renderMembers();renderCalendar();
+</script>
+</body></html>
